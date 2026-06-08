@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js",
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
     "test": "jest ./src/test",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage"
@@ -29,8 +30,12 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "devDependencies": {
     "jest": "^29.7.0",
-    "supertest": "^7.1.1"
+    "supertest": "^7.1.1",
+    "nodemon": "^3.1.7"
   }
 }
