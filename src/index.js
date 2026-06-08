@@ -4,7 +4,7 @@ const chalk = require("chalk");
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(chalk.green.bold("\n🚀 Server is running!\n"));
 
   console.log(
@@ -21,12 +21,4 @@ app.listen(PORT, () => {
     chalk.magenta("❤️ Environment: ") +
     chalk.whiteBright(process.env.NODE_ENV || "development")
   );
-
-  process.on("uncaughtException", (err) => {
-    console.error("🔥 UNCUGHT:", err);
-  });
-
-  process.on("unhandledRejection", (err) => {
-    console.error("🔥 REJECTION:", err);
-  });
 });
