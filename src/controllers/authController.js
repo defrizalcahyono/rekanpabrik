@@ -145,7 +145,7 @@ const getUserLoggedIn = async (
     const [rows] =
       await model.searchByID(req.id);
 
-    if (!rows.length) {
+    if (!rows || rows.length === 0) {
       return res.status(404).json({
         success: false,
         message: "User tidak ditemukan",
