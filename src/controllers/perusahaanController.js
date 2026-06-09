@@ -68,11 +68,11 @@ const getAllPerusahaan = async (req, res) => {
 };
 
 const getAllPerusahaanByIDPerusahaan = async (req, res) => {
-  const { idperusahaan } = req.params;
+  const { idPerusahaan } = req.params;
 
   try {
     const [data] =
-      await perusahaanModel.getPerusahaanByID(idperusahaan);
+      await perusahaanModel.getPerusahaanByID(idPerusahaan);
 
     if (!data.length) {
       return res.status(404).json({
@@ -80,12 +80,12 @@ const getAllPerusahaanByIDPerusahaan = async (req, res) => {
       });
     }
 
-    res.json({
+    return res.json({
       message: "Detail perusahaan",
       data,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Server error",
       error: error.message,
     });
