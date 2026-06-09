@@ -23,4 +23,11 @@ app.listen(PORT, "0.0.0.0", () => {
     chalk.magenta("❤️ Environment: ") +
     chalk.whiteBright(process.env.NODE_ENV || "development")
   );
+
+  if (err) {
+    console.error("LISTEN ERROR:", err);
+    return;
+  }
+
+  console.log(`Listening on ${PORT}`);
 });
