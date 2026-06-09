@@ -126,10 +126,10 @@ const getAllPostByIDPerusahaan = (
     ORDER BY pp.createdAt DESC
   `;
 
-  return conn.execute([
+  return conn.execute(
     SQLQuery,
     [idPerusahaan]
-  ]);
+  );
 };
 
 const addPostPekerjaan = (
