@@ -5,7 +5,7 @@ const melamarController = require("../controllers/melamarPekerjaanControllers");
 router.post("/", melamarController.melamarPekerjaan);
 
 router.patch(
-  "/:id",
+  "/:idlamaranpekerjaan",
   melamarController.updateStatus
 );
 
