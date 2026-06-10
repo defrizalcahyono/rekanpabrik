@@ -119,11 +119,11 @@ const getMelamarHistoryByIDPelamar = async (
   res
 ) => {
   try {
-    const { idpelamar } = req.params;
+    const { idPelamar } = req.params;
 
     const [data] =
       await melamarPekerjaanModel.getMelamarHistoryByIDPelamar(
-        idpelamar
+        idPelamar
       );
 
     return res.status(200).json({
