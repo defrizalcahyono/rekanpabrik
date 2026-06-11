@@ -91,6 +91,21 @@ const createdPostinganPekerjaan = async (req, res) => {
       });
     }
 
+    // CEK DUPLIKAT
+    const [existing] =
+      await postPekerjaanModel.checkDuplicatePostingan(
+        idPerusahaan,
+        posisi,
+        lokasi
+      );
+
+    if (existing.length > 0) {
+      return res.status(409).json({
+        message:
+          "Lowongan dengan posisi dan lokasi yang sama sudah ada",
+      });
+    }
+
     const createdAt = new Date();
 
     await postPekerjaanModel.addPostPekerjaan(

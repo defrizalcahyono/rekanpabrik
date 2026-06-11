@@ -182,6 +182,28 @@ const editStatusPostingan = (
   ]);
 };
 
+const checkDuplicatePostingan = (
+  idPerusahaan,
+  posisi,
+  lokasi
+) => {
+  const SQLQuery = `
+    SELECT id_post_pekerjaan
+    FROM posting_pekerjaan
+    WHERE id_perusahaan = ?
+      AND posisi = ?
+      AND lokasi = ?
+      AND status = 'terbuka'
+    LIMIT 1
+  `;
+
+  return conn.execute(SQLQuery, [
+    idPerusahaan,
+    posisi,
+    lokasi,
+  ]);
+};
+
 const deletePostingan = (
   idPostingan
 ) => {
@@ -244,4 +266,5 @@ module.exports = {
   deletePostingan,
 
   getDetailPelamar,
+  checkDuplicatePostingan
 };
