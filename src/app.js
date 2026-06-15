@@ -23,7 +23,7 @@ app.use(
     origin: [
       "http://localhost:3000", // React admin (future)
       "http://localhost:8000",  // Laravel (optional)
-      "https://web-admin-production-0a1d.up.railway.app" // Railways
+      "https://web-admin-rekan-pabrik.up.railway.app" // Railways
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
