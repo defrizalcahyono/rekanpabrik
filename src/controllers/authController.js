@@ -299,15 +299,13 @@ const createAccountAdmin = async (
     let {
       email,
       password,
-      first_name,
-      last_name,
+      name,
     } = req.body;
 
     if (
       !email ||
       !password ||
-      !first_name ||
-      !last_name
+      !name
     ) {
       return res.status(400).json({
         success: false,
@@ -333,8 +331,7 @@ const createAccountAdmin = async (
       email,
       password,
       "admin",
-      first_name,
-      last_name
+      name
     );
 
     return res.status(201).json({
