@@ -111,6 +111,41 @@ const getAllAdmin = async (req, res) => {
   }
 };
 
+const getMeAdmin = async (
+  req,
+  res
+) => {
+  try {
+    const [rows] =
+      await adminModel.searchByID(
+        req.id
+      );
+
+    if (
+      !rows ||
+      rows.length === 0
+    ) {
+      return res.status(404).json({
+        success: false,
+        message:
+          "Admin tidak ditemukan",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: rows[0],
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 const updateProfileAdmin = async (
   req,
   res
@@ -200,6 +235,7 @@ module.exports = {
   createAccountAdmin,
   countUser,
   getAllAdmin,
+  getMeAdmin,
   updateProfileAdmin,
   deleteAdminHandler,
 };
