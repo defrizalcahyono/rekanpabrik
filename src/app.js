@@ -21,12 +21,13 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:3000", // React admin (future)
-      "http://localhost:8000",  // Laravel (optional)
-      "https://web-admin-rekan-pabrik.up.railway.app" // Railways
+      "http://localhost:3000",
+      "http://localhost:8000",
+      "https://web-admin-rekan-pabrik.up.railway.app"
     ],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 
