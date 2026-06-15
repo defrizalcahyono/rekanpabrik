@@ -22,7 +22,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000", // React admin (future)
-      "http://localhost:8000", // Laravel (optional)
+      "http://localhost:8000",  // Laravel (optional)
+      "https://web-admin-production-0a1d.up.railway.app" // Railways
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
