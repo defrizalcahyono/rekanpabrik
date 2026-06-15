@@ -8,15 +8,13 @@ const createAccountAdmin = async (req, res) => {
     const {
       email,
       password,
-      first_name,
-      last_name,
+      name,
     } = req.body;
 
     if (
       !email ||
       !password ||
-      !first_name ||
-      !last_name
+      !name
     ) {
       return res.status(400).json({
         success: false,
@@ -37,9 +35,8 @@ const createAccountAdmin = async (req, res) => {
     await adminModel.addAdmin(
       email,
       password,
-      "admin",
-      first_name,
-      last_name
+      name,
+      "admin"
     );
 
     return res.status(201).json({
@@ -121,16 +118,14 @@ const updateProfileAdmin = async (
   try {
     const {
       email,
-      first_name,
-      last_name,
+      name,
     } = req.body;
 
     const id_admin = req.id;
 
     if (
       !email ||
-      !first_name ||
-      !last_name
+      !name
     ) {
       return res.status(400).json({
         success: false,
@@ -140,8 +135,7 @@ const updateProfileAdmin = async (
 
     await adminModel.updateProfileAdmin(
       email,
-      first_name,
-      last_name,
+      name,
       id_admin
     );
 

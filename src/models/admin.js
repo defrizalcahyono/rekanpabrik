@@ -9,8 +9,7 @@ const getAllAdmin = () => {
       id_admin,
       email,
       role,
-      first_name,
-      last_name,
+      name,
       created_at
     FROM admin
     ORDER BY id_admin DESC
@@ -31,8 +30,7 @@ const searchByID = (id) => {
       id_admin,
       email,
       role,
-      first_name,
-      last_name,
+      name,
       profile_photo,
       created_at
     FROM admin
@@ -58,8 +56,7 @@ const addAdmin = async (
   email,
   plainPassword,
   role,
-  first_name,
-  last_name
+  name
 ) => {
   const hashedPass = await bcrypt.hash(
     plainPassword,
@@ -72,40 +69,35 @@ const addAdmin = async (
       email,
       password,
       role,
-      first_name,
-      last_name
+      name
     )
-    VALUES (?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?)
   `;
 
   return conn.execute(SQLQuery, [
     email,
     hashedPass,
     role,
-    first_name,
-    last_name,
+    name
   ]);
 };
 
 const updateProfileAdmin = (
   email,
-  first_name,
-  last_name,
+  name,
   id_admin
 ) => {
   const SQLQuery = `
     UPDATE admin
     SET
       email = ?,
-      first_name = ?,
-      last_name = ?
+      name = ?
     WHERE id_admin = ?
   `;
 
   return conn.execute(SQLQuery, [
     email,
-    first_name,
-    last_name,
+    name,
     id_admin,
   ]);
 };
