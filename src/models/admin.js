@@ -31,7 +31,6 @@ const searchByID = (id) => {
       email,
       role,
       name,
-      profile_photo,
       created_at
     FROM admin
     WHERE id_admin = ?
