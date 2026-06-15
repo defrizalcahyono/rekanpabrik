@@ -9,6 +9,7 @@ const getAllPerusahaan = () => {
       p.id_perusahaan,
       p.nama_perusahaan,
       p.email,
+      p.role,
       p.about_me,
       p.profile_pict,
       p.alamat,
@@ -40,6 +41,7 @@ const getPerusahaanByID = (idPerusahaan) => {
       p.id_perusahaan,
       p.nama_perusahaan,
       p.email,
+      p.role
       p.about_me,
       p.profile_pict,
       p.alamat,
