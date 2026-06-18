@@ -34,7 +34,7 @@ router.patch(
 );
 
 router.delete(
-  "/:idPerusahaan",
+  "/:id_perusahaan",
   verifyJWT,
   perusahaanController.deletePerusahaanHandler
 );

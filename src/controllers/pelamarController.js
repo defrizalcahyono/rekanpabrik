@@ -165,10 +165,12 @@ const updateCVPelamar = async (req, res) => {
 };
 
 const deletePelamarHandler = async (req, res) => {
-  const { id_pelamar } = req.body;
+  const { id_pelamar } = req.params;
 
   try {
-    const [userData] = await pelamarModel.searchByID(id_pelamar);
+    const [userData] =
+      await pelamarModel.searchByID(id_pelamar);
+
     const found = userData[0];
 
     if (!found) {
@@ -177,11 +179,16 @@ const deletePelamarHandler = async (req, res) => {
       });
     }
 
-    // delete file R2
-    if (found.profile_pict) await deleteFromR2(found.profile_pict);
-    if (found.curriculum_vitae) await deleteFromR2(found.curriculum_vitae);
+    if (found.profile_pict) {
+      await deleteFromR2(found.profile_pict);
+    }
 
-    const result = await pelamarModel.deletePelamar(id_pelamar);
+    if (found.curriculum_vitae) {
+      await deleteFromR2(found.curriculum_vitae);
+    }
+
+    const result =
+      await pelamarModel.deletePelamar(id_pelamar);
 
     if (result[0].affectedRows === 0) {
       return res.status(404).json({
@@ -189,11 +196,11 @@ const deletePelamarHandler = async (req, res) => {
       });
     }
 
-    res.json({
+    return res.json({
       message: "Pelamar berhasil dihapus",
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Error delete pelamar",
       error: error.message,
     });

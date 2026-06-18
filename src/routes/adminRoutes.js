@@ -11,6 +11,9 @@ router.get("/me", verifyJWT, adminController.getMeAdmin);
 
 router.put("/profile", adminController.updateProfileAdmin);
 
-router.delete("/:id", adminController.deleteAdminHandler);
+router.delete(
+    "/:id_admin",
+    adminController.deleteAdminHandler
+);
 
 module.exports = router;

@@ -182,7 +182,7 @@ const cekPelamar = async (req, res) => {
 };
 
 const deletePerusahaanHandler = async (req, res) => {
-  const { id_perusahaan } = req.body;
+  const { id_perusahaan } = req.params;
 
   try {
     const [userData] =
@@ -201,7 +201,9 @@ const deletePerusahaanHandler = async (req, res) => {
     }
 
     const result =
-      await perusahaanModel.deletePerusahaan(id_perusahaan);
+      await perusahaanModel.deletePerusahaan(
+        id_perusahaan
+      );
 
     if (result[0].affectedRows === 0) {
       return res.status(404).json({
@@ -209,11 +211,11 @@ const deletePerusahaanHandler = async (req, res) => {
       });
     }
 
-    res.json({
+    return res.json({
       message: "Perusahaan berhasil dihapus",
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Error delete perusahaan",
       error: error.message,
     });

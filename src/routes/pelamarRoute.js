@@ -21,6 +21,9 @@ router.patch(
 
 router.patch("/:idPelamar/password", pelamarController.changePassword);
 
-router.delete("/:idPelamar", pelamarController.deletePelamarHandler);
+router.delete(
+  "/:id_pelamar",
+  pelamarController.deletePelamarHandler
+);
 
 module.exports = router;

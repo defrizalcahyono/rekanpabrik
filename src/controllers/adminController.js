@@ -190,12 +190,9 @@ const updateProfileAdmin = async (
   }
 };
 
-const deleteAdminHandler = async (
-  req,
-  res
-) => {
+const deleteAdminHandler = async (req, res) => {
   try {
-    const { id_admin } = req.body;
+    const { id_admin } = req.params;
 
     if (!id_admin) {
       return res.status(400).json({
@@ -205,9 +202,7 @@ const deleteAdminHandler = async (
     }
 
     const [result] =
-      await adminModel.deleteAdmin(
-        id_admin
-      );
+      await adminModel.deleteAdmin(id_admin);
 
     if (result.affectedRows === 0) {
       return res.status(404).json({
